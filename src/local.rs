@@ -121,7 +121,12 @@ impl Local {
             })?;
 
         // Build the query to search for all mail in our maildir.
-        let all_mail_query = format!("path:\"{}/**\"", relative_mail_dir.to_str().unwrap());
+	let rel = relative_mail_dir.to_str().unwrap();
+	let all_mail_query = if rel.is_empty() || rel == "." {
+	    "path:**".to_string()
+	    } else {
+	        format!("path:\"{}/**\"", rel)
+		};
 
         // Ensure the maildir contains the standard cur, new, and tmp dirs.
         let mail_cur_dir = canonical_mail_dir_path.join("cur");
