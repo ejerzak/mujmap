@@ -1,5 +1,18 @@
 # mujmap
 
+> **Fork status (July 2026):** to my knowledge this is an up-to-date fork that
+> currently works with Fastmail. The
+> [upstream repository](https://github.com/elizagamedev/mujmap) has been
+> inactive since 2023 and fails to sync with Fastmail because of changes to
+> their JMAP session object (see upstream issue
+> [#58](https://github.com/elizagamedev/mujmap/issues/58)). This fork
+> aggregates fixes from other forks — error-handling modernization and CI fixes
+> by Lyndon Sanche, the core-capability request fix by Spencer Jackson — plus
+> my own fixes for the notmuch root path query and for Fastmail's session
+> schema no longer advertising the core capability in `primaryAccounts` and
+> `accountCapabilities`. No warranty; if Fastmail shifts its schema again this
+> note may be stale.
+
 mujmap is a tool to synchronize your [notmuch](https://notmuchmail.org/)
 database with a server supporting the [JMAP mail
 protocol](https://jmap.io/spec.html). Specifically, it downloads new messages
